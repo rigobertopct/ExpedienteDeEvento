@@ -14,7 +14,8 @@
     <div class="col-md-12">
             <div class="card card-plain">
                 <div class="card-header">
-                    Deportes
+                            <h3 class="title">Deportes</h3>
+
                 </div>
                 <div class="card-body">
                     <table class="display" id="example" style="width: 100%">
@@ -28,11 +29,23 @@
     {% for depo in object_list %}
     <tr>
         <td>{{ depo.nombre }}</td>
-        <td><i class="fa fa-pencil"></i>||<i class="fa fa-trash"></i> </td>
+        <td><button class="btn btn-sm btn-info"><i class="fa fa-pencil"></i> Editar</button> ||
+            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Eliminar</button> </td>
     </tr>
     {% endfor %}
     </tbody>
+                    </table>
+                <button class="btn btn-sm btn-dark"><i class="fa fa-plus"></i> Nuevo Deporte</button></div>
 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <iframe
+    </div>
+  </div>
+</div>
 {% endblock content %}
 {% block javascripts %}
     <script src="{% static "assets/DataTables-1.13.1/js/jquery.js" %}"></script>
