@@ -16,13 +16,13 @@
                 {% csrf_token %} 
 
                 <div class="card-header">
-                  <h5 class="title">Register</h5>
+                  <h5 class="title">Registro</h5>
 
                   <h6 class="card-category">
                       {% if msg %}
                         <span class="text-danger">{{ msg | safe }}</span>
                       {% else %}
-                        Add your credentials
+                        Introduzca sus credenciales
                       {% endif %}  
                   </h6>
                 </div>
@@ -30,7 +30,7 @@
               {% if success %}
 
                 <p>
-                  Please <a href={% url 'login' %}>authenticate</a> using the new account.
+                  Por favor <a href={% url 'login' %}>Autentíquese</a> usando la nueva cuenta.
                 </p>  
 
               {% else %}
@@ -40,7 +40,7 @@
                     <div class="row">
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
-                          <label>Username</label>
+                          <label>Usuario</label>
                           {{ form.username }}
                         </div>
                       </div>
@@ -50,7 +50,7 @@
                     <div class="row">
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
-                          <label>Email</label>
+                          <label>Correo</label>
                           {{ form.email }}
                         </div>
                       </div>
@@ -60,17 +60,17 @@
                     <div class="row">
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
-                          <label>Password</label>
+                          <label>Contraseña</label>
                           {{ form.password1 }}
                         </div>
                       </div>
                     </div>
                     <span class="text-danger">{{ form.password1.errors }}</span>
-                    
+
                     <div class="row">
                         <div class="col-md-3 px-md-1">
                             <div class="form-group">
-                            <label>Password Check</label>
+                            <label>Repita la contraseña</label>
                             {{ form.password2 }}
                             </div>
                         </div>
@@ -79,9 +79,9 @@
 
                 </div>
                 <div class="card-footer">
-                  <button type="submit" name="register" class="btn btn-fill btn-primary">Register</button>
+                  <button type="submit" name="register" class="btn btn-fill btn-primary">Registro</button>
                   &nbsp; &nbsp;
-                  Have an account? <a href="{% url 'login' %}" class="text-primary">Login</a>
+                  Ya tiene una cuenta? <a href="{% url 'login' %}" class="text-primary">Iniciar Sesión</a>
                 </div>
 
               {% endif %} 
