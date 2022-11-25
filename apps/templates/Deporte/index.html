@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Deporte {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+    <link href="{% static "assets/DataTables-1.13.1/css/jquery.dataTables.css" %}">
+    <link rel="stylesheet" href="{% static "assets/DataTables-1.13.1/css/dataTables.bootstrap5.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/DataTables-1.13.1/css/dataTables.dataTables.min.css" %}">
+    <link href="{% static "assets/Buttons-2.3.3/css/buttons.dataTables.min.css" %}">
+{% endblock stylesheets %}
+
+{% block content %}
+    <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header">
+                    Deportes
+                </div>
+                <div class="card-body">
+                    <table class="display" id="example" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th style="padding-top: 10px;border-bottom: 1px solid rgba(0, 0, 0, 0.3);">Deporte</th>
+                            <th style="padding-top: 10px;border-bottom: 1px solid rgba(0, 0, 0, 0.3);">Opciones</th>
+                        </tr>
+                        </thead>
+    <tbody>
+    {% for depo in object_list %}
+    <tr>
+        <td>{{ depo.nombre }}</td>
+        <td><i class="fa fa-pencil"></i>||<i class="fa fa-trash"></i> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+{% endblock content %}
+{% block javascripts %}
+    <script src="{% static "assets/DataTables-1.13.1/js/jquery.js" %}"></script>
+    <script src="{% static "assets/DataTables-1.13.1/js/jquery.dataTables.js" %}"></script>
+    <script src="{% static "assets/Buttons-2.3.3/js/dataTables.buttons.min.js" %}"></script>
+    <script src="{% static "assets/Buttons-2.3.3/js/Jszip.js" %}"></script>
+    <script src="{% static "assets/Buttons-2.3.3/js/pdfmaker.js" %}"></script>
+    <script src="{% static "assets/Buttons-2.3.3/js/pdfmakefonts.js" %}"></script>
+    <script src="{% static "assets/Buttons-2.3.3/js/buttonsbootsa.js" %}"></script>
+    <script src="{% static "assets/Buttons-2.3.3/js/buttons.print.min.js" %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<img src="{% static "ico/excel.png" %}" width=35 />',
+                        titleAttr: 'Excel'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<img src="{% static "ico/Print.png" %}" width=35 />',
+                        titleAttr: 'CSV'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<img src="{% static "ico/PDF.png" %}" width=35 />',
+                        titleAttr: 'PDF'
+                    }
+                ],
+                "pagingType": "simple",
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "  Siguiente",
+                        "previous": "Anterior"
+                    },
+                }
+            });
+        })
+            ;
+    </script>
+{% endblock javascripts %}
