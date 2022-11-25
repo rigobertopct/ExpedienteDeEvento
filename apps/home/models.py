@@ -20,12 +20,8 @@ class Deporte(models.Model):
 
 
 class Disciplina(models.Model):
-    deporte = models.OneToOneField(
-        Deporte,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
     nombre = models.CharField(max_length=250, verbose_name="Nombre de la disciplina")
+    deporte_id = models.ForeignKey(Deporte, on_delete=models.SET_NULL, null=True, blank=True)
     def __str__(self):
         return self.nombre
     class Meta:
