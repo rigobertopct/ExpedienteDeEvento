@@ -65,6 +65,7 @@ class Atleta(models.Model):
     apel = models.CharField(max_length=250, verbose_name="Apellido")
     apel = models.CharField(max_length=250, verbose_name="Apellido")
     fecha = models.DateField(verbose_name="Fecha de Nacimiento")
+    disciplina_id = models.ForeignKey(Disciplina, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.nombre
@@ -85,3 +86,12 @@ class Participacion(models.Model):
         verbose_name = 'participacion'
         verbose_name_plural = 'participacions'
         db_table = 'participacions'
+
+class Partido(models.Model):
+    atleta_id = models.ForeignKey(Atleta, on_delete=models.SET_NULL, null=True, blank=True)
+    result = models.CharField(max_length=250, verbose_name="Resultado")
+    observaciones = models.CharField(max_length=10000, verbose_name="Observaciones")
+    class Meta:
+        verbose_name = 'partido'
+        verbose_name_plural = 'partidos'
+        db_table = 'partidos'

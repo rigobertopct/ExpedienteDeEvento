@@ -12,5 +12,6 @@ admin.site.register(Deporte)
 admin.site.register(Disciplina)
 admin.site.register(Atleta)
 admin.site.register(CodEvento)
+admin.site.register(Partido)
 
 
